@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+        }
+        .hero-section {
+            background: url("https://source.unsplash.com/1600x900/?university,college") no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .btn-custom {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Dhruv's CollegeApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'college:register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'college:login' %}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="text-center hero-content">
+        <h1 class="display-4">Welcome to Dhruv's College App</h1>
+        <p class="lead">Your gateway to an incredible academic journey.</p>
+        <a href="{% url 'college:register' %}" class="btn btn-primary btn-custom">Register</a>
+        <a href="{% url 'college:login' %}" class="btn btn-outline-light btn-custom">Login</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <img src="https://imageio.forbes.com/specials-images/imageserve/66cc9d9ffc537cb99b7a3440/Aerial-view-of-several-opened-books-on-the-table-/0x0.jpg?format=jpg&crop=1884,1256,x0,y0,safe&width=960" class="rounded img-fluid" alt="Books">
+            <h3 class="mt-3">Quality Education</h3>
+            <p>Access the best learning resources and faculty.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1524069290683-0457abfe42c3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2Nob29sJTIwc3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D" class="rounded img-fluid" alt="Students">
+            <h3 class="mt-3">Student Community</h3>
+            <p>Join a diverse and active student community.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="https://images.pexels.com/photos/1290141/pexels-photo-1290141.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="rounded img-fluid" alt="Campus">
+            <h3 class="mt-3">Great Campus</h3>
+            <p>Experience a vibrant campus life.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 CollegeApp. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
