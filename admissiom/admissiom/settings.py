@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Django settings for admissiom project.
 
@@ -11,25 +12,39 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+=======
+from pathlib import Path
+import os  # Import os for media file handling
+>>>>>>> 69002000 (made changes)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+<<<<<<< HEAD
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
+=======
+# Quick-start development settings - unsuitable for production
+>>>>>>> 69002000 (made changes)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-t@)g(+rru^haeoa!mlt#*c+fyqqwj8h=c&0bami6syl-zn0-@9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
+=======
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+# Application definition
+>>>>>>> 69002000 (made changes)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'college',
+=======
+    'college',  # Your app
+>>>>>>> 69002000 (made changes)
 ]
 
 MIDDLEWARE = [
@@ -50,12 +69,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+<<<<<<< HEAD
 ROOT_URLCONF = 'admissiom.urls'
+=======
+ROOT_URLCONF = 'admissiom.urls'  # ✅ Ensure correct project name
+>>>>>>> 69002000 (made changes)
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [BASE_DIR / 'college/templates'],
+=======
+        'DIRS': [BASE_DIR / 'college/templates'],  # Ensure this directory exists
+>>>>>>> 69002000 (made changes)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,12 +95,18 @@ TEMPLATES = [
     },
 ]
 
+<<<<<<< HEAD
 WSGI_APPLICATION = 'admissiom.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+=======
+WSGI_APPLICATION = 'admissiom.wsgi.application'  # ✅ Ensure correct project name
+
+# Database Configuration
+>>>>>>> 69002000 (made changes)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -81,6 +114,7 @@ DATABASES = {
     }
 }
 
+<<<<<<< HEAD
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -121,4 +155,35 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+=======
+# Password validation
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
+
+# Internationalization
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
+
+# ✅ Static Files Configuration
+STATIC_URL = '/static/'  
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Ensure this folder exists
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Collect static files here on deployment
+
+# ✅ Media Files Configuration (for File Uploads)
+MEDIA_URL = '/media/'  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# ✅ Serve media files in development mode
+if DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns = static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+# Default primary key field type
+>>>>>>> 69002000 (made changes)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -9,25 +9,59 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
+<<<<<<< HEAD
+=======
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+>>>>>>> 69002000 (made changes)
     <!-- Custom Styles -->
     <style>
         /* Background Gradient */
         body {
+<<<<<<< HEAD
             background: linear-gradient(to right, #141e30, #243b55);
+=======
+            background: radial-gradient(circle, #141e30, #1b2838);
+>>>>>>> 69002000 (made changes)
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+<<<<<<< HEAD
+=======
+            padding: 20px;
+>>>>>>> 69002000 (made changes)
         }
 
         /* Glassmorphism Card */
         .login-card {
+<<<<<<< HEAD
             background: rgba(255, 255, 255, 0.15);
             border-radius: 15px;
             backdrop-filter: blur(12px);
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
             padding: 30px;
             color: #fff;
+=======
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            color: #fff;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            transition: all 0.4s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hover Glow Effect */
+        .login-card:hover {
+            box-shadow: 0px 0px 40px rgba(255, 0, 102, 0.8);
+            transform: scale(1.02);
+>>>>>>> 69002000 (made changes)
         }
 
         /* Card Header */
@@ -35,40 +69,98 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px 10px 0 0;
             text-align: center;
+<<<<<<< HEAD
             font-size: 24px;
             font-weight: bold;
             padding: 15px;
+=======
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px;
+            letter-spacing: 1px;
+>>>>>>> 69002000 (made changes)
         }
 
         /* Form Fields */
         .login-card input {
+<<<<<<< HEAD
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
+=======
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+>>>>>>> 69002000 (made changes)
             color: #fff;
             padding: 12px;
             border-radius: 8px;
             transition: all 0.3s;
             width: 100%;
+<<<<<<< HEAD
         }
 
         .login-card input:focus {
             background: rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
             border-color: #fff;
+=======
+            font-size: 16px;
+        }
+
+        .login-card input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            border-color: #fff;
+            outline: none;
+        }
+
+        /* Password Field */
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .toggle-password:hover {
+            color: #ff0066;
+>>>>>>> 69002000 (made changes)
         }
 
         /* Login Button */
         .login-card .btn {
+<<<<<<< HEAD
             background: #ff4d4d;
+=======
+            background: linear-gradient(90deg, #ff0066, #ff1a1a);
+>>>>>>> 69002000 (made changes)
             border: none;
             transition: 0.3s;
             padding: 12px;
             font-weight: bold;
+<<<<<<< HEAD
         }
 
         .login-card .btn:hover {
             background: #ff1a1a;
             transform: scale(1.05);
+=======
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .login-card .btn:hover {
+            background: linear-gradient(90deg, #ff1a1a, #ff0066);
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 0, 102, 0.8);
+>>>>>>> 69002000 (made changes)
         }
 
         /* Footer Link */
@@ -76,6 +168,10 @@
             color: #ffd700;
             text-decoration: none;
             transition: 0.3s;
+<<<<<<< HEAD
+=======
+            font-weight: bold;
+>>>>>>> 69002000 (made changes)
         }
 
         .login-card .card-footer a:hover {
@@ -97,7 +193,11 @@
         <div class="col-md-5">
             <div class="card login-card text-white">
                 <div class="card-header">
+<<<<<<< HEAD
                     Login to Your Account
+=======
+                    <i class="fas fa-user-circle"></i> Login to Your Account
+>>>>>>> 69002000 (made changes)
                 </div>
                 <div class="card-body">
                     <!-- Flash Messages -->
@@ -117,9 +217,18 @@
                             <input type="text" id="id_username" name="username" class="form-control" required>
                         </div>
 
+<<<<<<< HEAD
                         <div class="mb-3">
                             <label for="id_password" class="form-label">Password</label>
                             <input type="password" id="id_password" name="password" class="form-control" required>
+=======
+                        <div class="mb-3 password-container">
+                            <label for="id_password" class="form-label">Password</label>
+                            <input type="password" id="id_password" name="password" class="form-control" required>
+                            <span class="toggle-password" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </span>
+>>>>>>> 69002000 (made changes)
                         </div>
 
                         <button type="submit" class="btn btn-danger w-100">Login</button>
@@ -135,6 +244,24 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<<<<<<< HEAD
+=======
+<script>
+    function togglePassword() {
+        let passwordField = document.getElementById("id_password");
+        let toggleIcon = document.getElementById("toggleIcon");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.classList.remove("fa-eye");
+            toggleIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleIcon.classList.remove("fa-eye-slash");
+            toggleIcon.classList.add("fa-eye");
+        }
+    }
+</script>
+>>>>>>> 69002000 (made changes)
 
 </body>
 </html>
