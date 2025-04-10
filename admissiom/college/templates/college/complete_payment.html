@@ -46,6 +46,11 @@
             background: #218838;
             transform: scale(1.05);
         }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +61,7 @@
             <div class="card payment-card text-white">
                 <div class="card-header text-center">Complete Your Payment</div>
                 <div class="card-body">
-                    <form method="post">
+                    <form id="paymentForm">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="paymentMethod" class="form-label">Select Payment Method</label>
@@ -71,15 +76,18 @@
                         <div id="cardDetails" style="display: none;">
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Card Number</label>
-                                <input type="text" id="cardNumber" class="form-control" placeholder="**** **** **** ****">
+                                <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                <small class="error" id="cardError">Invalid Card Number (16 digits only).</small>
                             </div>
                             <div class="mb-3">
                                 <label for="expiry" class="form-label">Expiry Date</label>
-                                <input type="text" id="expiry" class="form-control" placeholder="MM/YY">
+                                <input type="month" id="expiry" class="form-control" min="" required>
+                                <small class="error" id="expiryError">Invalid Expiry Date.</small>
                             </div>
                             <div class="mb-3">
                                 <label for="cvv" class="form-label">CVV</label>
-                                <input type="password" id="cvv" class="form-control" placeholder="***">
+                                <input type="text" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
+                                <small class="error" id="cvvError">CVV must be 3 digits.</small>
                             </div>
                         </div>
 
@@ -87,7 +95,7 @@
                         <div id="upiDetails" style="display: none;">
                             <div class="mb-3">
                                 <label for="upiId" class="form-label">UPI ID</label>
-                                <input type="text" id="upiId" class="form-control" placeholder="yourname@upi">
+                                <input type="text" id="upiId" class="form-control" placeholder="yourname@upi" required>
                             </div>
                         </div>
 
@@ -101,8 +109,82 @@
 
 <script>
     document.getElementById("paymentMethod").addEventListener("change", function() {
-        document.getElementById("cardDetails").style.display = this.value === "card" ? "block" : "none";
-        document.getElementById("upiDetails").style.display = this.value === "upi" ? "block" : "none";
+        let cardDetails = document.getElementById("cardDetails");
+        let upiDetails = document.getElementById("upiDetails");
+
+        if (this.value === "card") {
+            cardDetails.style.display = "block";
+            upiDetails.style.display = "none";
+        } else if (this.value === "upi") {
+            cardDetails.style.display = "none";
+            upiDetails.style.display = "block";
+        } else {
+            cardDetails.style.display = "none";
+            upiDetails.style.display = "none";
+        }
+    });
+
+    // Set min expiry date to current month
+    document.getElementById("expiry").min = new Date().toISOString().slice(0, 7);
+
+    document.getElementById("paymentForm").addEventListener("submit", function(event) {
+        let isValid = true;
+
+        // Validate Card Number
+        let cardNumber = document.getElementById("cardNumber");
+        let cardError = document.getElementById("cardError");
+        let cardRegex = /^\d{4} \d{4} \d{4} \d{4}$/;
+        if (document.getElementById("paymentMethod").value === "card") {
+            if (!cardRegex.test(cardNumber.value)) {
+                cardError.style.display = "block";
+                isValid = false;
+            } else {
+                cardError.style.display = "none";
+            }
+        }
+
+        // Validate CVV
+        let cvv = document.getElementById("cvv");
+        let cvvError = document.getElementById("cvvError");
+        let cvvRegex = /^\d{3}$/;
+        if (document.getElementById("paymentMethod").value === "card") {
+            if (!cvvRegex.test(cvv.value)) {
+                cvvError.style.display = "block";
+                isValid = false;
+            } else {
+                cvvError.style.display = "none";
+            }
+        }
+
+        // Validate Expiry Date
+        let expiry = document.getElementById("expiry");
+        let expiryError = document.getElementById("expiryError");
+        let today = new Date();
+        let selectedDate = new Date(expiry.value + "-01");
+        if (document.getElementById("paymentMethod").value === "card") {
+            if (selectedDate <= today) {
+                expiryError.style.display = "block";
+                isValid = false;
+            } else {
+                expiryError.style.display = "none";
+            }
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+
+    // Auto-format Card Number
+    document.getElementById("cardNumber").addEventListener("input", function(event) {
+        let value = this.value.replace(/\D/g, "").substring(0, 16);
+        let formattedValue = value.replace(/(\d{4})/g, "$1 ").trim();
+        this.value = formattedValue;
+    });
+
+    // Limit CVV to 3 numbers
+    document.getElementById("cvv").addEventListener("input", function(event) {
+        this.value = this.value.replace(/\D/g, "").substring(0, 3);
     });
 </script>
 
